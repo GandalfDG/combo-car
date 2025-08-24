@@ -1,9 +1,9 @@
 extends Node2D
 class_name Grid
 
-@export var rows: int = 5
-@export var cols: int = 5
-@export var min_group_size: int = 3
+@export_range(1, 20, 1, "or_greater") var rows: int = 5
+@export_range(1, 20, 1, "or_greater") var cols: int = 5
+@export_range(1, 5, 1, "or_greater") var min_group_size: int = 3
 
 @export var offset: int = 55
 @export var refill_offset: int = 30

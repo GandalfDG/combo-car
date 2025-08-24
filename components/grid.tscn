@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bnfois00347c2"]
 
 [ext_resource type="Script" uid="uid://c1k5pgejmn3bb" path="res://components/scripts/grid.gd" id="1_ebq2e"]
-[ext_resource type="Script" uid="uid://0casuxhdggb7" path="res://components/refill_row.gd" id="2_0dr41"]
+[ext_resource type="Script" path="res://components/refill_row.gd" id="2_0dr41"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ebq2e"]
 resource_local_to_scene = true

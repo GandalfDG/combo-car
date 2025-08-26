@@ -5,14 +5,17 @@ class_name Grid
 @export var cols: int = 5
 @export var min_group_size: int = 3
 
-@export var offset: float = 55.0
+@export var offset: int = 55
+@export var refill_offset: int = 30
 
 @onready
-var grid_area: Area2D = $BoundaryArea
+var grid_area: Area2D = $InteractionArea
 
 @onready
-var grid_shape: CollisionShape2D = $BoundaryArea/BoundaryShape
+var grid_shape: CollisionShape2D = $InteractionArea/BoundaryShape
 
+@onready
+var refill_row = $RefillRow
 
 var grid: Array[Array]
 var groups: Array
@@ -28,12 +31,17 @@ func _ready():
 	grid_area.position = Vector2(cols * offset / 2, rows * offset / 2)
 	grid_shape.shape.size = Vector2(cols * offset, rows * offset)
 
+	# position the refill row below the grid
+	refill_row.init(offset)
+	refill_row.position = Vector2(0, rows * offset + refill_offset)
+
 	for column in cols:
 		grid.append([])
 		for row in rows:
 			grid[column].append(null)
 
 	generate_board()
+	generate_refills()
 
 	redraw_grid()
 	calculate_token_groups()
@@ -53,6 +61,8 @@ func _process(_delta: float) -> void:
 		var group = get_group_of_token(coord_under_mouse)
 		if group.size() >= min_group_size:
 			highlight_group(group, true)
+
+
 
 	# if click, determine token clicked
 func pixel_within_grid(coord: Vector2) -> bool:
@@ -75,6 +85,25 @@ func generate_board():
 			add_child(token_node)
 			token_node.set_type(randi_range(0,3) as Token.token_type)
 			set_token(token_node, row, column)
+
+func generate_refills():
+	var refills: Array[Token] = []
+	for column in cols:
+		var token_node: Token = token.instantiate()
+		refill_row.add_child(token_node)
+		token_node.set_type(randi_range(0,3) as Token.token_type)
+		refills.append(token_node)
+
+	refill_row.push_refills(refills)
+
+func load_refills():
+	var refills: Array[Token] = refill_row.pop_refills()
+	for idx in range(cols):
+		refills[idx].reparent(self, false)
+		grid[idx].push_back(refills[idx])
+		grid[idx].pop_front()
+
+	update_grid()
 
 func highlight_group(group: Array, enable: bool):
 
@@ -100,64 +129,21 @@ func update_grid():
 			set_token(null, idx, col)
 		for idx in range(temp_col.size()):
 			set_token(temp_col[idx], rows - temp_col.size() + idx, col)
-			
+
 #	search for empty columns and compact horizontally
 	var temp_grid = grid.filter(func(col: Array): return !col.all(func(token): return token == null))
-	
+
 	var arr = []
 	arr.resize(rows)
 	arr.fill(null)
 	for _i in range(cols - temp_grid.size()):
 		temp_grid.append(arr)
-		
+
 	grid = temp_grid
-					
-			
+
+
 	redraw_grid()
 	calculate_token_groups()
-
-#func donot():
-	#for col in range(cols):
-		#var col_array = []
-		#for row in range(rows-1, -1, -1):
-##			create a temporary array from the column
-			#col_array.append(grid[row])
-#
-##		filter the nulls out of the array
-		#col_array = col_array.filter(func(token): return token != null)
-#
-##		put the filtered column back into the grid
-		#for row in range(rows-1, -1, -1):
-			#var idx = rows - row - 1
-			#grid[row][column] = col_array[idx] if idx < col_array.size() else null
-#
-#
-#
-## search for empty coluns and shift tokens horizontally to fill them
-	#var empty_columns = []
-	#for column in range(cols):
-		#var col_array = []
-		#for row in range(rows):
-			#col_array.append(grid[row][column])
-#
-		#if col_array.all(func(token): return token == null):
-			#empty_columns.append(column)
-#
-	#if empty_columns.size() > 0:
-		#var idx = 0
-		#var dest_column = 0
-		#while idx < cols:
-			#if idx in empty_columns:
-				#idx += 1
-				#continue
-#
-			#for row in range(rows):
-				#grid[row][dest_column] = grid[row][idx]
-			#idx += 1
-			#dest_column += 1
-#
-	#redraw_grid()
-	#calculate_token_groups()
 
 func redraw_grid():
 	for row in range(rows):
@@ -236,3 +222,9 @@ func _on_boundary_area_input_event(viewport: Node, event: InputEvent, shape_idx:
 				set_token(null, coord[0], coord[1])# do I actually want a null value or should there be some other placeholder?
 
 			update_grid()
+
+func _input(event):
+		# check input to load refills
+	if event.is_action_pressed("activate"):
+		load_refills()
+		generate_refills()

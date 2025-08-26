@@ -1,18 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://bnfois00347c2"]
+[gd_scene load_steps=4 format=3 uid="uid://bnfois00347c2"]
 
 [ext_resource type="Script" uid="uid://c1k5pgejmn3bb" path="res://components/scripts/grid.gd" id="1_ebq2e"]
+[ext_resource type="Script" uid="uid://0casuxhdggb7" path="res://components/refill_row.gd" id="2_0dr41"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ebq2e"]
 resource_local_to_scene = true
 
 [node name="Grid" type="Node2D"]
 script = ExtResource("1_ebq2e")
-offset = 60.0
 
-[node name="BoundaryArea" type="Area2D" parent="."]
+[node name="InteractionArea" type="Area2D" parent="."]
 
-[node name="BoundaryShape" type="CollisionShape2D" parent="BoundaryArea"]
+[node name="BoundaryShape" type="CollisionShape2D" parent="InteractionArea"]
 shape = SubResource("RectangleShape2D_ebq2e")
+
+[node name="RefillRow" type="Node2D" parent="."]
+script = ExtResource("2_0dr41")
 
 [node name="Debug Label" type="Label" parent="."]
 offset_left = -372.0
@@ -21,4 +24,4 @@ offset_right = 729.0
 offset_bottom = -123.0
 autowrap_mode = 1
 
-[connection signal="input_event" from="BoundaryArea" to="." method="_on_boundary_area_input_event"]
+[connection signal="input_event" from="InteractionArea" to="." method="_on_boundary_area_input_event"]

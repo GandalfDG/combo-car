@@ -101,7 +101,9 @@ func load_refills():
 	for idx in range(cols):
 		refills[idx].reparent(self, false)
 		grid[idx].push_back(refills[idx])
-		grid[idx].pop_front()
+		var leaving_token = grid[idx].pop_front()
+		if leaving_token != null:
+			leaving_token.destroy()
 
 	update_grid()
 
@@ -218,7 +220,7 @@ func _on_boundary_area_input_event(viewport: Node, event: InputEvent, shape_idx:
 		if group.size() >= min_group_size:
 			for coord in group:
 				var current_token = get_token(coord[0], coord[1])
-				current_token.queue_free()
+				current_token.destroy()
 				set_token(null, coord[0], coord[1])# do I actually want a null value or should there be some other placeholder?
 
 			update_grid()

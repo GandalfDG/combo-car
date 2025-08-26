@@ -39,3 +39,7 @@ func set_highlighted(highlight: bool):
 			highlight_polygon.visible = true
 		token_state.NONE:
 			highlight_polygon.visible = false
+
+func destroy():
+	# TODO animate token destruction
+	self.queue_free()

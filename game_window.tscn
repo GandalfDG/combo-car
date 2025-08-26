@@ -7,4 +7,3 @@
 [node name="Grid" parent="." instance=ExtResource("1_mn5vm")]
 position = Vector2(393, 224)
 min_group_size = 1
-offset = 55

@@ -123,6 +123,17 @@ func clear_highlights():
 				token.set_highlighted(false)
 
 func update_grid():
+#	search for empty columns and compact horizontally
+	var temp_grid = grid.filter(func(col: Array): return !col.all(func(token): return token == null))
+
+	var arr = []
+	arr.resize(rows)
+	arr.fill(null)
+	for _i in range(cols - temp_grid.size()):
+		temp_grid.append(arr.duplicate())
+
+	grid = temp_grid
+	
 #	search for empty cells and drop tokens above them down
 	var temp_col
 	for col in range(cols):
@@ -131,18 +142,6 @@ func update_grid():
 			set_token(null, idx, col)
 		for idx in range(temp_col.size()):
 			set_token(temp_col[idx], rows - temp_col.size() + idx, col)
-
-#	search for empty columns and compact horizontally
-	var temp_grid = grid.filter(func(col: Array): return !col.all(func(token): return token == null))
-
-	var arr = []
-	arr.resize(rows)
-	arr.fill(null)
-	for _i in range(cols - temp_grid.size()):
-		temp_grid.append(arr)
-
-	grid = temp_grid
-
 
 	redraw_grid()
 	calculate_token_groups()
@@ -220,7 +219,7 @@ func _on_boundary_area_input_event(viewport: Node, event: InputEvent, shape_idx:
 		if group.size() >= min_group_size:
 			for coord in group:
 				var current_token = get_token(coord[0], coord[1])
-				current_token.destroy()
+				if current_token != null: current_token.destroy()
 				set_token(null, coord[0], coord[1])# do I actually want a null value or should there be some other placeholder?
 
 			update_grid()

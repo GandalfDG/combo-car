@@ -31,6 +31,9 @@ func set_type(type: token_type):
 func set_debug_label(text: String):
 	debug_label.text = text
 
+func update_position(new_position: Vector2):
+	var tweener: Tween = self.create_tween()
+	tweener.tween_property(self, "position", new_position, 0.5)
 
 func set_highlighted(highlight: bool):
 	state = token_state.HIGHLIGHT if highlight else token_state.NONE

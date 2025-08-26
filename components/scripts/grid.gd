@@ -99,7 +99,7 @@ func generate_refills():
 func load_refills():
 	var refills: Array[Token] = refill_row.pop_refills()
 	for idx in range(cols):
-		refills[idx].reparent(self, false)
+		refills[idx].reparent(self)
 		grid[idx].push_back(refills[idx])
 		var leaving_token = grid[idx].pop_front()
 		if leaving_token != null:
@@ -133,7 +133,7 @@ func update_grid():
 		temp_grid.append(arr.duplicate())
 
 	grid = temp_grid
-	
+
 #	search for empty cells and drop tokens above them down
 	var temp_col
 	for col in range(cols):
@@ -149,13 +149,13 @@ func update_grid():
 func redraw_grid():
 	for row in range(rows):
 		for column in range(cols):
-			var current_token = get_token(row, column)
+			var current_token: Token = get_token(row, column)
 			if current_token == null:
 				continue
 
 			current_token.set_debug_label(str(row) + "," + str(column))
 
-			current_token.position = Vector2(offset*column, offset*row)
+			current_token.update_position(Vector2(offset*column, offset*row))
 
 func calculate_token_groups():
 	groups = []

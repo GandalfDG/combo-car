@@ -32,8 +32,11 @@ func set_debug_label(text: String):
 	debug_label.text = text
 
 func update_position(new_position: Vector2):
+	var distance = abs(new_position - position)
+	
 	var tweener: Tween = self.create_tween()
-	tweener.tween_property(self, "position", new_position, 0.5)
+	tweener.tween_property(self, "position:y", new_position.y, 0.005 * distance.y)
+	tweener.tween_property(self, "position:x", new_position.x, 0.005 * distance.x)
 
 func set_highlighted(highlight: bool):
 	state = token_state.HIGHLIGHT if highlight else token_state.NONE

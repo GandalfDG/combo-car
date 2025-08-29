@@ -36,7 +36,7 @@ func update_position(new_position: Vector2):
 	
 	var tweener: Tween = self.create_tween()
 	tweener.tween_property(self, "position:y", new_position.y, 0.005 * distance.y)
-	tweener.tween_property(self, "position:x", new_position.x, 0.005 * distance.x)
+	tweener.tween_property(self, "position:x", new_position.x, 0.0005 * distance.x)
 
 func set_highlighted(highlight: bool):
 	state = token_state.HIGHLIGHT if highlight else token_state.NONE

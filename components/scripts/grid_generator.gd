@@ -52,9 +52,9 @@ func generate_group(group_size: int):
 					)
 		)
 
-		valid_coords = valid_coords.filter(func(coord_pair): return not bounding_box[coord_pair[0]][coord_pair[1]])
+		valid_coords = valid_coords.filter(func(coord_pair): return not bounding_box[coord_pair[1]][coord_pair[0]])
 		current_coord = valid_coords.pick_random()
-		bounding_box[current_coord[0]][current_coord[1]] = true
+		bounding_box[current_coord[1]][current_coord[0]] = true
 
 	return bounding_box
 
@@ -63,4 +63,4 @@ func bbox_gen(group_size):
 	var width: int = randi_range(1, group_size if group_size < cols else cols)
 	var height: int = ceil(group_size / width)
 
-	return [width+1, height+1]
+	return [width+2, height+2]

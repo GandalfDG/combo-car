@@ -7,6 +7,7 @@ enum token_state {NONE, HIGHLIGHT}
 var type: token_type = token_type.TYPE_1
 var state: token_state = token_state.NONE
 
+
 var color_polygon: Polygon2D
 var highlight_polygon: Polygon2D
 var debug_label: Label

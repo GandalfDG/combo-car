@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://5e6m7csha5to"]
+
+[ext_resource type="PackedScene" uid="uid://b50otusq306jl" path="res://components/token.tscn" id="1_jwjdh"]
+[ext_resource type="Script" uid="uid://f2lxem768usq" path="res://components/scripts/goal_token.gd" id="2_e7pb4"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_e7pb4"]
+size = Vector2(128, 128)
+
+[node name="GoalToken" instance=ExtResource("1_jwjdh")]
+script = ExtResource("2_e7pb4")
+
+[node name="Sprite2D" parent="." index="1"]
+texture = SubResource("PlaceholderTexture2D_e7pb4")

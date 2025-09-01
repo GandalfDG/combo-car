@@ -27,8 +27,8 @@ var token = preload("res://components/token.tscn")
 
 func _ready():
 	debug_label = $"Debug Label"
-	grid_gen = GridGenerator.new(5, 5, 1, 2)
-	grid_gen.generate_groups(10)
+	#grid_gen = GridGenerator.new(5, 5, 1, 2)
+	#grid_gen.generate_groups(10)
 
 	grid_area.position = Vector2(cols * offset / 2, rows * offset / 2)
 	grid_shape.shape.size = Vector2(cols * offset, rows * offset)

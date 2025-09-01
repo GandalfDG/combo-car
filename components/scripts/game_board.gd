@@ -24,6 +24,7 @@ var debug_label: Label
 var grid_gen: GridGenerator
 
 var token = preload("res://components/token.tscn")
+var goal_token = preload("res://components/goal_token.tscn")
 
 func _ready():
 	debug_label = $"Debug Label"
@@ -72,12 +73,17 @@ func pixel_to_grid_coord(coord: Vector2) -> Array[int]:
 	return [coord.y / offset, coord.x / offset]
 
 func generate_board():
-	for row in rows:
-		for column in cols:
+	for column in cols:
+		for row in range(rows-1, 1, -1):
 			var token_node: Token = token.instantiate()
 			add_child(token_node)
 			token_node.set_type(randi_range(0,3) as Token.token_type)
 			grid.set_element(row, column, token_node)
+		
+	for column in grid.grid_container:
+		var token = goal_token.instantiate()
+		add_child(token)
+		column[0] = token
 
 func generate_refills():
 	var refills: Array[Token] = []
@@ -140,15 +146,13 @@ func update_grid():
 	calculate_token_groups()
 
 func redraw_grid():
-	for row in range(rows):
-		for column in range(cols):
-			var current_token: Token = grid.get_element(row, column)
-			if current_token == null:
-				continue
-
-			current_token.set_debug_label(str(row) + "," + str(column))
-
-			current_token.update_position(Vector2(offset*column, offset*row))
+	grid.element_apply_coord(func(element: Token, row, col):
+			if element == null:
+				return
+			
+			element.set_debug_label(str(row) + "," + str(col))
+			element.update_position(Vector2(offset*col, offset*row))
+	)			
 
 func calculate_token_groups():
 	groups = []

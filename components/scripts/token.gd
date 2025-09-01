@@ -1,7 +1,7 @@
 extends Node2D
 class_name Token
 
-enum token_type {TYPE_1, TYPE_2, TYPE_3, TYPE_4}
+enum token_type {TYPE_1, TYPE_2, TYPE_3, TYPE_4, GOAL_TYPE}
 enum token_state {NONE, HIGHLIGHT}
 
 var type: token_type = token_type.TYPE_1

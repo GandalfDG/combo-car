@@ -160,7 +160,7 @@ func calculate_token_groups():
 	var group_queue = []
 	for row in rows:
 		for col in cols:
-			if [row, col] in visited_nodes or grid.get_element(row, col) == null:
+			if [row, col] in visited_nodes or grid.get_element(row, col) == null or grid.get_element(row, col).type == Token.token_type.GOAL_TYPE:
 				continue
 
 			group_queue.append([row,col])

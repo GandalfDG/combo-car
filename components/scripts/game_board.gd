@@ -41,6 +41,7 @@ func _ready():
 	grid = Grid.new(rows, cols, null)
 
 	generate_board()
+	update_grid()
 	generate_refills()
 
 	redraw_grid()
@@ -120,16 +121,7 @@ func clear_highlights():
 	grid.element_apply(func(el): if el != null: el.set_highlighted(false))
 
 func update_grid():
-#	search for empty columns and compact horizontally
-	var temp_grid = grid.grid_container.filter(func(col: Array): return !col.all(func(token): return token == null))
 
-	var arr = []
-	arr.resize(rows)
-	arr.fill(null)
-	for _i in range(cols - temp_grid.size()):
-		temp_grid.append(arr.duplicate())
-
-	grid.grid_container = temp_grid
 
 #	search for empty cells and drop tokens above them down
 	var temp_col
@@ -140,6 +132,27 @@ func update_grid():
 		for idx in range(temp_col.size()):
 			column[rows-temp_col.size() + idx] = temp_col[idx]
 	)
+	
+#	search for goal tokens on the bottom row
+	grid.column_apply(func(column): 
+		var token = column[-1]
+		if token == null: return
+		
+		if token.type == Token.token_type.GOAL_TYPE:
+			column[-1] = null
+			token.destroy()
+	)
+	
+#	search for empty columns and compact horizontally
+	var temp_grid = grid.grid_container.filter(func(col: Array): return !col.all(func(token): return token == null))
+
+	var arr = []
+	arr.resize(rows)
+	arr.fill(null)
+	for _i in range(cols - temp_grid.size()):
+		temp_grid.append(arr.duplicate())
+
+	grid.grid_container = temp_grid
 			
 
 	redraw_grid()

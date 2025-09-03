@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://chfu8ci10o4ow"]
+
+[ext_resource type="Texture2D" uid="uid://cqtw7t2uag6f8" path="res://icon.svg" id="1_pl6i8"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_abljl"]
+viewport_path = NodePath("Dashboard/RearView/SubViewport")
+
+[node name="DriverView" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+
+[node name="Dashboard" type="Sprite3D" parent="."]
+
+[node name="RearView" type="Node3D" parent="Dashboard"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.42403)
+
+[node name="RearViewSprite" type="Sprite3D" parent="Dashboard/RearView"]
+transform = Transform3D(0.449733, 0, 0, 0, 0.449733, 0, 0, 0, 1, 0.461041, 0.788098, -1.42072)
+texture = SubResource("ViewportTexture_abljl")
+
+[node name="SubViewport" type="SubViewport" parent="Dashboard/RearView"]
+size = Vector2i(512, 128)
+
+[node name="Camera3D" type="Camera3D" parent="Dashboard/RearView/SubViewport"]
+transform = Transform3D(-0.937798, -0.0952242, 0.333867, -2.39782e-08, 0.96165, 0.274278, -0.347181, 0.257217, -0.901834, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.45021)
+texture = ExtResource("1_pl6i8")
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.06005, 0, -3.19347)
+texture = ExtResource("1_pl6i8")
+
+[node name="Sprite3D3" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.06005, 0, 3.87254)
+texture = ExtResource("1_pl6i8")

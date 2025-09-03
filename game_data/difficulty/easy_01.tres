@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BoardDifficulty" load_steps=2 format=3 uid="uid://ctu5s1bm4t1r0"]
+
+[ext_resource type="Script" uid="uid://c3o840c37svd5" path="res://components/scripts/resources/difficulty_setting.gd" id="1_jrkre"]
+
+[resource]
+script = ExtResource("1_jrkre")
+columns = 5
+rows = 5
+refill_friendliness = 3
+group_sizes = Array[int]([0, 0, 0])
+metadata/_custom_type_script = "uid://c3o840c37svd5"

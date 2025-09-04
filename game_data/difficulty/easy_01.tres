@@ -4,8 +4,11 @@
 
 [resource]
 script = ExtResource("1_jrkre")
-columns = 5
+time_limit = 30.0
+refill_count = 50
+columns = 8
 rows = 5
+goal_count = 3
 refill_friendliness = 3
 group_sizes = Array[int]([0, 0, 0])
 metadata/_custom_type_script = "uid://c3o840c37svd5"

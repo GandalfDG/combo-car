@@ -1,7 +1,10 @@
 extends Node2D
 
-@export_range(1, 20, 1, "or_greater") var rows: int = 5
-@export_range(1, 20, 1, "or_greater") var cols: int = 5
+@export
+var difficulty: BoardDifficulty
+
+var rows: int = 5
+var cols: int = 5
 @export_range(1, 5, 1, "or_greater") var min_group_size: int = 3
 
 @export var offset: int = 55
@@ -31,6 +34,9 @@ func _ready():
 	#grid_gen = GridGenerator.new(5, 5, 1, 2)
 	#grid_gen.generate_groups(10)
 
+	rows = difficulty.rows
+	cols = difficulty.columns
+
 	grid_area.position = Vector2(cols * offset / 2, rows * offset / 2)
 	grid_shape.shape.size = Vector2(cols * offset, rows * offset)
 
@@ -39,6 +45,8 @@ func _ready():
 	refill_row.position = Vector2(0, rows * offset + refill_offset)
 
 	grid = Grid.new(rows, cols, null)
+
+	difficulty.connect("changed", reset_board)
 
 	generate_board()
 	update_grid()
@@ -80,7 +88,7 @@ func generate_board():
 			add_child(token_node)
 			token_node.set_type(randi_range(0,3) as Token.token_type)
 			grid.set_element(row, column, token_node)
-		
+
 	for column in grid.grid_container:
 		var token = goal_token.instantiate()
 		add_child(token)
@@ -125,24 +133,24 @@ func update_grid():
 
 #	search for empty cells and drop tokens above them down
 	var temp_col
-	grid.column_apply(func(column): 
+	grid.column_apply(func(column):
 		temp_col = column.filter(func(token): return token != null)
 		for idx in range(rows - temp_col.size()):
 			column[idx] = null
 		for idx in range(temp_col.size()):
 			column[rows-temp_col.size() + idx] = temp_col[idx]
 	)
-	
+
 #	search for goal tokens on the bottom row
-	grid.column_apply(func(column): 
+	grid.column_apply(func(column):
 		var token = column[-1]
 		if token == null: return
-		
+
 		if token.type == Token.token_type.GOAL_TYPE:
 			column[-1] = null
 			token.destroy()
 	)
-	
+
 #	search for empty columns and compact horizontally
 	var temp_grid = grid.grid_container.filter(func(col: Array): return !col.all(func(token): return token == null))
 
@@ -153,7 +161,7 @@ func update_grid():
 		temp_grid.append(arr.duplicate())
 
 	grid.grid_container = temp_grid
-			
+
 
 	redraw_grid()
 	calculate_token_groups()
@@ -162,10 +170,10 @@ func redraw_grid():
 	grid.element_apply_coord(func(element: Token, row, col):
 			if element == null:
 				return
-			
+
 			element.set_debug_label(str(row) + "," + str(col))
 			element.update_position(Vector2(offset*col, offset*row))
-	)			
+	)
 
 func calculate_token_groups():
 	groups = []
@@ -233,6 +241,11 @@ func _on_boundary_area_input_event(viewport: Node, event: InputEvent, shape_idx:
 				grid.set_element(coord[0], coord[1], null)# do I actually want a null value or should there be some other placeholder?
 
 			update_grid()
+
+func reset_board():
+	print("reset board because difficulty changed")
+	grid = null
+	_ready()
 
 func _input(event):
 		# check input to load refills

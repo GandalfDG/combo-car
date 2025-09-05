@@ -43,9 +43,9 @@ func _ready():
 	# position the refill row below the grid
 	refill_row.init(offset)
 	refill_row.position = Vector2(0, rows * offset + refill_offset)
-
-	grid = Grid.new(rows, cols, null)
-
+	
+	grid_gen = GridGenerator.new(rows, cols, 0,0)
+	
 	difficulty.connect("changed", reset_board)
 
 	generate_board()
@@ -82,17 +82,8 @@ func pixel_to_grid_coord(coord: Vector2) -> Array[int]:
 	return [coord.y / offset, coord.x / offset]
 
 func generate_board():
-	for column in cols:
-		for row in range(rows-1, 1, -1):
-			var token_node: Token = token.instantiate()
-			add_child(token_node)
-			token_node.set_type(randi_range(0,3) as Token.token_type)
-			grid.set_element(row, column, token_node)
-
-	for column in grid.grid_container:
-		var token = goal_token.instantiate()
-		add_child(token)
-		column[0] = token
+	grid = grid_gen.generate_board(difficulty.group_sizes, self)
+	pass
 
 func generate_refills():
 	var refills: Array[Token] = []

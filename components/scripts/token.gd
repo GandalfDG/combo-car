@@ -4,7 +4,8 @@ class_name Token
 enum token_type {TYPE_1, TYPE_2, TYPE_3, TYPE_4, GOAL_TYPE}
 enum token_state {NONE, HIGHLIGHT}
 
-var type: token_type = token_type.TYPE_1
+var type: token_type = token_type.TYPE_1:
+	set(value): set_type
 var state: token_state = token_state.NONE
 
 
@@ -16,6 +17,7 @@ func _ready():
 	color_polygon = $Color
 	highlight_polygon = $highlight_indicator
 	debug_label = $"Debug Label"
+	set_type(type)
 
 func set_type(type: token_type):
 	self.type = type

@@ -12,20 +12,20 @@ var grid: Grid
 func _init(rows:int, cols:int, avg:float, sd:float):
 	self.rows=rows
 	self.cols=cols
-	self.avg_group_size=avg
-	self.group_size_deviation=sd
 	
 	grid = Grid.new(rows, cols, null)
 	
-func generate_board(group_sizes: Array[int]):
+func generate_board(group_sizes: Array[int], token_parent: Node):
 	for size in group_sizes:
 		generate_group(size, Token.token_type.TYPE_1)
 		
 	grid.element_apply(func(element): if element == null: 
 		var new_token: Token = token_scene.instantiate()
-		new_token.set_type(randi_range(0,3) as Token.token_type)
+		new_token.type = randi_range(0,3) as Token.token_type
 		element = new_token
 		)
+		
+	grid.element_apply(func(element): if element != null: token_parent.add_child(element))
 		
 	return grid
 
@@ -34,8 +34,8 @@ func generate_group(group_size: int, token_type: Token.token_type):
 	# find an empty space to start
 	var start_coord = null
 	while start_coord == null:
-		var row_coord = randi_range(0, rows)
-		var col_coord = randi_range(0, cols)
+		var row_coord = randi_range(0, rows-1)
+		var col_coord = randi_range(0, cols-1)
 		if grid.get_element(row_coord, col_coord) == null:
 			start_coord = [row_coord, col_coord]		
 		
@@ -64,5 +64,5 @@ func generate_group(group_size: int, token_type: Token.token_type):
 		if valid_coords.size() < 1: break
 		current_coord = valid_coords.pick_random()
 		var new_token: Token = token_scene.instantiate()
-		new_token.set_type(token_type)
+		new_token.type=token_type
 		grid.set_element(current_coord[0], current_coord[1], new_token)

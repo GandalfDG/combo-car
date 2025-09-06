@@ -5,13 +5,13 @@ var rows: int
 var cols: int
 var grid_container: Array[Array] = []
 
-func _init(rows: int, columns: int, default_value):
+func _init(rows: int, columns: int, default_value: Variant):
 	self.rows = rows
 	self.cols = columns
 	for column in columns:
 		grid_container.append([])
 		for row in rows:
-			grid_container[column].append(null)
+			grid_container[column].append(default_value)
 
 func get_element(row: int, column: int):
 	return grid_container[column][row]

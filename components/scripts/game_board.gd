@@ -1,5 +1,8 @@
 extends Node2D
 
+signal group_cleared(size, type)
+signal goal_cleared
+
 @export
 var difficulty: BoardDifficulty
 
@@ -124,9 +127,8 @@ func update_grid():
 
 
 #	search for empty cells and drop tokens above them down
-	var temp_col
 	grid.column_apply(func(column):
-		temp_col = column.filter(func(token): return token != null)
+		var temp_col = column.filter(func(token): return token != null)
 		for idx in range(rows - temp_col.size()):
 			column[idx] = null
 		for idx in range(temp_col.size()):
@@ -135,12 +137,13 @@ func update_grid():
 
 #	search for goal tokens on the bottom row
 	grid.column_apply(func(column):
-		var token = column[-1]
-		if token == null: return
+		var cur_token = column[-1]
+		if cur_token == null: return
 
-		if token.type == Token.token_type.GOAL_TYPE:
+		if cur_token.type == Token.token_type.GOAL_TYPE:
 			column[-1] = null
-			token.destroy()
+			cur_token.destroy()
+			goal_cleared.emit()
 	)
 
 #	search for empty columns and compact horizontally
@@ -221,17 +224,21 @@ func get_group_of_token(token_coord) -> Array:
 	return []
 
 
-func _on_boundary_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+func _on_boundary_area_input_event(_viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event.is_action_pressed("select"):
 		var position = self.get_local_mouse_position()
 		var token_coord = pixel_to_grid_coord(position)
 		var group = get_group_of_token(token_coord)
 		if group.size() >= min_group_size:
+			var group_type = null
 			for coord in group:
 				var current_token = grid.get_element(coord[0], coord[1])
+				if group_type == null:
+					group_type = current_token.type
 				if current_token != null: current_token.destroy()
 				grid.set_element(coord[0], coord[1], null)# do I actually want a null value or should there be some other placeholder?
 
+			group_cleared.emit(group.size(), group_type)
 			update_grid()
 
 func reset_board():

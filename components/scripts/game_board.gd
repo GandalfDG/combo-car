@@ -43,9 +43,9 @@ func _ready():
 	# position the refill row below the grid
 	refill_row.init(offset)
 	refill_row.position = Vector2(0, rows * offset + refill_offset)
-	
+
 	grid_gen = GridGenerator.new(rows, cols, 0,0)
-	
+
 	difficulty.connect("changed", reset_board)
 
 	generate_board()
@@ -89,9 +89,9 @@ func generate_refills():
 	var refills: Array[Token] = []
 	for column in cols:
 		var token_node: Token = token.instantiate()
-		refill_row.add_child(token_node)
-		token_node.set_type(randi_range(0,3) as Token.token_type)
+		token_node.type = randi_range(0,3) as Token.token_type
 		refills.append(token_node)
+		refill_row.add_child(token_node)
 
 	refill_row.push_refills(refills)
 

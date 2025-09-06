@@ -4,8 +4,7 @@ class_name Token
 enum token_type {TYPE_1, TYPE_2, TYPE_3, TYPE_4, GOAL_TYPE}
 enum token_state {NONE, HIGHLIGHT}
 
-var type: token_type = token_type.TYPE_1:
-	set(value): set_type
+var type: token_type
 var state: token_state = token_state.NONE
 
 
@@ -17,26 +16,25 @@ func _ready():
 	color_polygon = $Color
 	highlight_polygon = $highlight_indicator
 	debug_label = $"Debug Label"
-	set_type(type)
+	set_token_display()
 
-func set_type(type: token_type):
-	self.type = type
-	match self.type:
-		token_type.TYPE_1:
-			color_polygon.color = Color.RED
-		token_type.TYPE_2:
-			color_polygon.color = Color.GREEN
-		token_type.TYPE_3:
-			color_polygon.color = Color.BLUE
-		token_type.TYPE_4:
-			color_polygon.color = Color.GOLD
+func set_token_display():
+		match self.type:
+			token_type.TYPE_1:
+				color_polygon.color = Color.RED
+			token_type.TYPE_2:
+				color_polygon.color = Color.GREEN
+			token_type.TYPE_3:
+				color_polygon.color = Color.BLUE
+			token_type.TYPE_4:
+				color_polygon.color = Color.GOLD
 
 func set_debug_label(text: String):
 	debug_label.text = text
 
 func update_position(new_position: Vector2):
 	var distance = abs(new_position - position)
-	
+
 	var tweener: Tween = self.create_tween()
 	tweener.tween_property(self, "position:y", new_position.y, 0.005 * distance.y)
 	tweener.tween_property(self, "position:x", new_position.x, 0.0005 * distance.x)

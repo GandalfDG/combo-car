@@ -28,17 +28,17 @@ func get_row(row):
 		row_arr.append(column[row])
 
 	return row_arr
-	
+
 func element_apply(fn: Callable):
 	for col in grid_container:
 		for element in col:
 			fn.call(element)
-			
+
 func element_apply_coord(fn: Callable):
 	for col in cols:
 		for row in rows:
-			fn.call(get_element(row, col), row, col)	
-			
+			fn.call(get_element(row, col), row, col)
+
 func column_apply(fn: Callable):
 	for col in grid_container:
 		fn.call(col)

@@ -24,6 +24,12 @@ var rows: int = 5:
 	set(value):
 		rows=value
 		emit_changed()
+		
+@export_range(8, 20, 1, "or_greater")
+var max_row: int = 10:
+	set(value):
+		max_row=value
+		emit_changed()
 
 @export_range(1, 10, 1, "or_greater")
 var goal_count: int = 3:

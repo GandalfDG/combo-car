@@ -5,14 +5,16 @@ var token_scene = preload("res://components/token.tscn")
 
 var rows: int
 var cols: int
+var max_rows: int
 
 var grid: Grid
 
 
-func _init(rows:int, cols:int, avg:float, sd:float):
+func _init(rows:int, cols:int, max_rows:int):
 	self.rows=rows
 	self.cols=cols
-
+	self.max_rows = max_rows
+	
 	grid = Grid.new(rows, cols, null)
 
 func generate_board(group_sizes: Array[int], token_parent: Node):
@@ -27,6 +29,7 @@ func generate_board(group_sizes: Array[int], token_parent: Node):
 		)
 
 	grid.element_apply(func(element): if element != null: token_parent.add_child(element))
+	grid.add_rows(max_rows - rows, null)
 
 	return grid
 

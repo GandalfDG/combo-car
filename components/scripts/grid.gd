@@ -3,7 +3,7 @@ class_name Grid
 
 var rows: int
 var cols: int
-var grid_container: Array = []
+var grid_container: Array[Array] = []
 
 func _init(rows: int, columns: int, default_value):
 	self.rows = rows
@@ -42,3 +42,13 @@ func element_apply_coord(fn: Callable):
 func column_apply(fn: Callable):
 	for col in grid_container:
 		fn.call(col)
+		
+func add_rows(row_count: int, value: Variant):
+	var append = []
+	append.resize(row_count)
+	append.fill(value)
+	for column in grid_container:
+		column.append_array(append.duplicate())
+	
+	self.rows += row_count
+		

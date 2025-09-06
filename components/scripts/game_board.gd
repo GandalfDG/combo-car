@@ -34,8 +34,9 @@ func _ready():
 	#grid_gen = GridGenerator.new(5, 5, 1, 2)
 	#grid_gen.generate_groups(10)
 
-	rows = difficulty.rows
+	rows = difficulty.max_row
 	cols = difficulty.columns
+	
 
 	grid_area.position = Vector2(cols * offset / 2, rows * offset / 2)
 	grid_shape.shape.size = Vector2(cols * offset, rows * offset)
@@ -44,7 +45,7 @@ func _ready():
 	refill_row.init(offset)
 	refill_row.position = Vector2(0, rows * offset + refill_offset)
 
-	grid_gen = GridGenerator.new(rows, cols, 0,0)
+	grid_gen = GridGenerator.new(difficulty.rows, cols, rows)
 
 	difficulty.connect("changed", reset_board)
 
@@ -235,7 +236,9 @@ func _on_boundary_area_input_event(viewport: Node, event: InputEvent, shape_idx:
 
 func reset_board():
 	print("reset board because difficulty changed")
+	grid.element_apply(func(element): if element != null: element.queue_free())
 	grid = null
+	difficulty.disconnect("changed", reset_board)
 	_ready()
 
 func _input(event):

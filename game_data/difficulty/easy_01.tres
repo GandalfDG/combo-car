@@ -6,8 +6,8 @@
 script = ExtResource("1_jrkre")
 time_limit = 30.0
 refill_count = 50
-columns = 5
-rows = 5
+columns = 6
+rows = 4
 max_row = 10
 goal_count = 3
 refill_friendliness = 0.6

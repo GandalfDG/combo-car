@@ -1,7 +1,9 @@
 extends Node2D
 
-signal group_cleared(size, type)
+signal group_cleared(size: int, type: Token.token_type)
 signal goal_cleared
+signal token_overflowed(type: Token.token_type)
+signal goal_overflowed
 
 @export
 var difficulty: BoardDifficulty
@@ -107,6 +109,10 @@ func load_refills():
 		column.push_back(refills[idx])
 		var leaving_token = column.pop_front()
 		if leaving_token != null:
+			if leaving_token.type == Token.token_type.GOAL_TYPE:
+				goal_overflowed.emit()
+			else:
+				token_overflowed.emit(leaving_token.type)
 			leaving_token.destroy()
 
 	update_grid()

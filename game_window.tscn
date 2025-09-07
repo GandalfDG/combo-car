@@ -1,8 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://bai2mcthexgm5"]
+[gd_scene load_steps=3 format=3 uid="uid://bai2mcthexgm5"]
 
 [ext_resource type="PackedScene" uid="uid://bnfois00347c2" path="res://components/game_board.tscn" id="1_mn5vm"]
+[ext_resource type="Script" uid="uid://chnytm4mu42kh" path="res://game_window.gd" id="1_q0rpe"]
 
 [node name="GameWindow" type="Node2D"]
+script = ExtResource("1_q0rpe")
 
 [node name="GameBoard" parent="." instance=ExtResource("1_mn5vm")]
-position = Vector2(393, 224)
+position = Vector2(361, 16)
+
+[connection signal="goal_cleared" from="GameBoard" to="." method="_on_game_board_goal_cleared"]
+[connection signal="goal_overflowed" from="GameBoard" to="." method="_on_game_board_goal_overflowed"]
+[connection signal="group_cleared" from="GameBoard" to="." method="_on_game_board_group_cleared"]
+[connection signal="token_overflowed" from="GameBoard" to="." method="_on_game_board_token_overflowed"]

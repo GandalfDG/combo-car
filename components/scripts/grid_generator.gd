@@ -2,6 +2,7 @@ extends RefCounted
 class_name GridGenerator
 
 var token_scene = preload("res://components/token.tscn")
+var goal_scene = preload("res://components/goal_token.tscn")
 
 var rows: int
 var cols: int
@@ -17,7 +18,7 @@ func _init(rows:int, cols:int, max_rows:int):
 	
 	grid = Grid.new(rows, cols, null)
 
-func generate_board(group_sizes: Array[int], token_parent: Node):
+func generate_board(group_sizes: Array[int], token_parent: Node, goal_count: int):
 	for size in group_sizes:
 		#generate_group(size, Token.token_type.TYPE_3)
 		generate_group(size, randi_range(0,3) as Token.token_type)
@@ -30,7 +31,19 @@ func generate_board(group_sizes: Array[int], token_parent: Node):
 
 	grid.element_apply(func(element): if element != null: token_parent.add_child(element))
 	grid.add_rows(max_rows - rows, null)
-
+	
+	var goal_idx_bag = range(cols)
+	var goal_indices = []
+	for _i in goal_count:
+		var idx = goal_idx_bag.pick_random()
+		goal_idx_bag.remove_at(goal_idx_bag.find(idx))
+		goal_indices.append(idx)
+		
+	for idx in goal_indices:
+		var goal_node = goal_scene.instantiate()
+		token_parent.add_child(goal_node)
+		grid.set_element(max_rows - rows - 1, idx, goal_node)
+		
 	return grid
 
 func generate_group(group_size: int, token_type: Token.token_type):

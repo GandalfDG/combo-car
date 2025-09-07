@@ -88,7 +88,7 @@ func pixel_to_grid_coord(coord: Vector2) -> Array[int]:
 	return [coord.y / offset, coord.x / offset]
 
 func generate_board():
-	grid = grid_gen.generate_board(difficulty.group_sizes, self)
+	grid = grid_gen.generate_board(difficulty.group_sizes, self, difficulty.goal_count)
 	pass
 
 func generate_refills():

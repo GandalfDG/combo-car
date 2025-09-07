@@ -47,8 +47,10 @@ func add_rows(row_count: int, value: Variant):
 	var append = []
 	append.resize(row_count)
 	append.fill(value)
-	for column in grid_container:
-		column.append_array(append.duplicate())
+	for col_idx in grid_container.size():
+		var new_col = append.duplicate()
+		new_col.append_array(grid_container[col_idx])
+		grid_container[col_idx] = new_col
 	
 	self.rows += row_count
 		

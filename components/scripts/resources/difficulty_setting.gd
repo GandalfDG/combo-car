@@ -37,8 +37,8 @@ var goal_count: int = 3:
 		goal_count=value
 		emit_changed()
 
-@export_range(0, 10, 1, "or_greater")
-var refill_friendliness: int = 3:
+@export_range(0, 1, 0.05, "or_greater")
+var refill_friendliness: float = 0.5:
 	set(value):
 		refill_friendliness=value
 		emit_changed()

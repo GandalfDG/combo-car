@@ -92,14 +92,7 @@ func generate_board():
 	pass
 
 func generate_refills():
-	var refills: Array[Token] = []
-	for column in cols:
-		var token_node: Token = token.instantiate()
-		token_node.type = randi_range(0,3) as Token.token_type
-		refills.append(token_node)
-		refill_row.add_child(token_node)
-
-	refill_row.push_refills(refills)
+	refill_row.generate_refills(grid, difficulty.refill_friendliness)
 
 func load_refills():
 	var refills: Array[Token] = refill_row.pop_refills()

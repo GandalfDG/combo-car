@@ -1,10 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://bai2mcthexgm5"]
+[gd_scene load_steps=4 format=3 uid="uid://bai2mcthexgm5"]
 
 [ext_resource type="PackedScene" uid="uid://bnfois00347c2" path="res://components/game_board.tscn" id="1_mn5vm"]
 [ext_resource type="Script" uid="uid://chnytm4mu42kh" path="res://game_window.gd" id="1_q0rpe"]
+[ext_resource type="PackedScene" uid="uid://3hdw4dfl5eb5" path="res://game_data/tracks/oval_track.tscn" id="2_h0jfx"]
 
 [node name="GameWindow" type="Node2D"]
 script = ExtResource("1_q0rpe")
+
+[node name="OvalTrack" parent="." instance=ExtResource("2_h0jfx")]
+position = Vector2(330, 226)
+scale = Vector2(0.2, 0.2)
 
 [node name="GameBoard" parent="." instance=ExtResource("1_mn5vm")]
 position = Vector2(361, 16)

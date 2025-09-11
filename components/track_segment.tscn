@@ -1,13 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bets58ufrwk2"]
-
-[ext_resource type="Texture2D" uid="uid://db2pwnsr08x1k" path="res://assets/track/curve.svg" id="1_m777u"]
+[gd_scene load_steps=2 format=3 uid="uid://bets58ufrwk2"]
 
 [sub_resource type="Curve2D" id="Curve2D_jhp4q"]
 
 [node name="TrackSegment" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_m777u")
 
 [node name="EntryPoint" type="Marker2D" parent="Sprite2D"]
 position = Vector2(-256, 512)
@@ -17,3 +14,7 @@ position = Vector2(512, -256)
 
 [node name="RacingLine" type="Path2D" parent="Sprite2D"]
 curve = SubResource("Curve2D_jhp4q")
+
+[node name="TrackArea" type="Area2D" parent="."]
+
+[node name="TrackShape" type="CollisionShape2D" parent="TrackArea"]

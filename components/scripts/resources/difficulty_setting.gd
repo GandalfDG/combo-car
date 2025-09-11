@@ -24,7 +24,7 @@ var rows: int = 5:
 	set(value):
 		rows=value
 		emit_changed()
-		
+
 @export_range(8, 20, 1, "or_greater")
 var max_row: int = 10:
 	set(value):

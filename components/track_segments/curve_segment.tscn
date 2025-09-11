@@ -1,5 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://ygpvrgwb2nfb"]
+[gd_scene load_steps=3 format=3 uid="uid://ygpvrgwb2nfb"]
 
 [ext_resource type="PackedScene" uid="uid://bets58ufrwk2" path="res://components/track_segment.tscn" id="1_3pjur"]
+[ext_resource type="Texture2D" uid="uid://db2pwnsr08x1k" path="res://assets/track/curve.svg" id="2_jhp4q"]
 
 [node name="TrackSegment" instance=ExtResource("1_3pjur")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_jhp4q")

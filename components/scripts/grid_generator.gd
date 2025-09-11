@@ -15,7 +15,7 @@ func _init(rows:int, cols:int, max_rows:int):
 	self.rows=rows
 	self.cols=cols
 	self.max_rows = max_rows
-	
+
 	grid = Grid.new(rows, cols, null)
 
 func generate_board(group_sizes: Array[int], token_parent: Node, goal_count: int):
@@ -31,19 +31,19 @@ func generate_board(group_sizes: Array[int], token_parent: Node, goal_count: int
 
 	grid.element_apply(func(element): if element != null: token_parent.add_child(element))
 	grid.add_rows(max_rows - rows, null)
-	
+
 	var goal_idx_bag = range(cols)
 	var goal_indices = []
 	for _i in goal_count:
 		var idx = goal_idx_bag.pick_random()
 		goal_idx_bag.remove_at(goal_idx_bag.find(idx))
 		goal_indices.append(idx)
-		
+
 	for idx in goal_indices:
 		var goal_node = goal_scene.instantiate()
 		token_parent.add_child(goal_node)
 		grid.set_element(max_rows - rows - 1, idx, goal_node)
-		
+
 	return grid
 
 func generate_group(group_size: int, token_type: Token.token_type):

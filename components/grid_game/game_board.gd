@@ -31,8 +31,8 @@ var hovered_group: Array
 var debug_label: Label
 var grid_gen: GridGenerator
 
-var token = preload("res://components/token.tscn")
-var goal_token = preload("res://components/goal_token.tscn")
+var token = preload("res://components/grid_game/token.tscn")
+var goal_token = preload("res://components/grid_game/goal_token.tscn")
 
 func _ready():
 	debug_label = $"Debug Label"

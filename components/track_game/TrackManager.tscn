@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://ches8kohh1gmp"]
+
+[ext_resource type="Script" uid="uid://cdfgubc0gmd7f" path="res://components/track_game/track_manager.gd" id="1_gol62"]
+[ext_resource type="PackedScene" uid="uid://3hdw4dfl5eb5" path="res://game_data/tracks/oval_track.tscn" id="2_4ag0n"]
+[ext_resource type="PackedScene" uid="uid://vncu15o3c4sh" path="res://components/track_game/car.tscn" id="3_sl0t6"]
+
+[node name="TrackManager" type="Node2D"]
+script = ExtResource("1_gol62")
+
+[node name="OvalTrack" parent="." instance=ExtResource("2_4ag0n")]
+position = Vector2(10, 5)
+
+[node name="Car" parent="." instance=ExtResource("3_sl0t6")]
+position = Vector2(1330, -389)
+rotation = 1.5708
+
+[node name="Car2" parent="." instance=ExtResource("3_sl0t6")]
+position = Vector2(1071, -303)
+rotation = 1.5708
+
+[node name="Car3" parent="." instance=ExtResource("3_sl0t6")]
+position = Vector2(937, -192)
+rotation = 1.5708
+
+[node name="Car4" parent="." instance=ExtResource("3_sl0t6")]
+position = Vector2(721, -101)
+rotation = 1.5708

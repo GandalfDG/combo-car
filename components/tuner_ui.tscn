@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dbm0o6df8d8qe"]
 
-[ext_resource type="PackedScene" uid="uid://bnfois00347c2" path="res://components/game_board.tscn" id="1_jwc21"]
+[ext_resource type="PackedScene" uid="uid://bnfois00347c2" path="res://components/grid_game/game_board.tscn" id="1_jwc21"]
 
 [node name="TunerUI" type="Node2D"]
 

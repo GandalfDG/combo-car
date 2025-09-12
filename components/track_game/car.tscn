@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://vncu15o3c4sh"]
+
+[ext_resource type="Script" uid="uid://d2c5dc5x00nu3" path="res://components/scripts/car.gd" id="1_qihn0"]
+[ext_resource type="Texture2D" uid="uid://ldi63w7hxc88" path="res://temp_assets/kenney_puzzle-pack-2/PNG/Tiles green/tileGreen_07.png" id="2_ka16b"]
+
+[node name="Car" type="Node2D"]
+script = ExtResource("1_qihn0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ka16b")

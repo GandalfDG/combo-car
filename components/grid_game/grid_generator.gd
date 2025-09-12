@@ -1,8 +1,8 @@
 extends RefCounted
 class_name GridGenerator
 
-var token_scene = preload("res://components/token.tscn")
-var goal_scene = preload("res://components/goal_token.tscn")
+var token_scene = preload("res://components/grid_game/token.tscn")
+var goal_scene = preload("res://components/grid_game/goal_token.tscn")
 
 var rows: int
 var cols: int

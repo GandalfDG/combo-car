@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://ygpvrgwb2nfb"]
+
+[ext_resource type="PackedScene" uid="uid://bets58ufrwk2" path="res://components/track_game/track_segment.tscn" id="1_3pjur"]
+[ext_resource type="Texture2D" uid="uid://db2pwnsr08x1k" path="res://assets/track/curve.svg" id="2_jhp4q"]
+
+[node name="TrackSegment" instance=ExtResource("1_3pjur")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_jhp4q")
+
+[node name="RacingLine" parent="Sprite2D" index="2"]
+position = Vector2(0.665802, -5.37172)
+scale = Vector2(1.0026, 1.01047)
+
+[node name="TrackShape" parent="TrackArea" index="0"]
+position = Vector2(506, 502)

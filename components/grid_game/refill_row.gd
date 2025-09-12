@@ -3,7 +3,7 @@ extends Node2D
 var offset = 60
 var refill_row: Array[Token]
 
-var token_scene = preload("res://components/token.tscn")
+var token_scene = preload("res://components/grid_game/token.tscn")
 
 func init(token_offset: int):
 	offset = token_offset

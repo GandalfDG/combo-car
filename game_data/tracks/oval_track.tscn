@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://3hdw4dfl5eb5"]
 
-[ext_resource type="PackedScene" uid="uid://ygpvrgwb2nfb" path="res://components/track_segments/curve_segment.tscn" id="1_636u1"]
-[ext_resource type="PackedScene" uid="uid://bnfjsxc8kovug" path="res://components/track_segments/straight_segment.tscn" id="2_en2eh"]
+[ext_resource type="PackedScene" uid="uid://ygpvrgwb2nfb" path="res://components/track_game/track_segments/curve_segment.tscn" id="1_636u1"]
+[ext_resource type="PackedScene" uid="uid://bnfjsxc8kovug" path="res://components/track_game/track_segments/straight_segment.tscn" id="2_en2eh"]
 
 [node name="OvalTrack" type="Node2D"]
 

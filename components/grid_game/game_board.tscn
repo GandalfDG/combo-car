@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bnfois00347c2"]
 
-[ext_resource type="Script" uid="uid://c1k5pgejmn3bb" path="res://components/scripts/game_board.gd" id="1_ebq2e"]
-[ext_resource type="Script" uid="uid://0casuxhdggb7" path="res://components/scripts/refill_row.gd" id="2_0dr41"]
+[ext_resource type="Script" uid="uid://c1k5pgejmn3bb" path="res://components/grid_game/game_board.gd" id="1_ebq2e"]
+[ext_resource type="Script" uid="uid://0casuxhdggb7" path="res://components/grid_game/refill_row.gd" id="2_0dr41"]
 [ext_resource type="Resource" uid="uid://ctu5s1bm4t1r0" path="res://game_data/difficulty/easy_01.tres" id="2_jl2tm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ebq2e"]

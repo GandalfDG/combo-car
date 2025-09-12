@@ -1,4 +1,5 @@
 extends Node2D
+class_name Car
 
 @export var stats: CarStats
 

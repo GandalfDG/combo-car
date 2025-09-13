@@ -1,28 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://3hdw4dfl5eb5"]
+[gd_scene load_steps=4 format=3 uid="uid://3hdw4dfl5eb5"]
 
 [ext_resource type="PackedScene" uid="uid://ygpvrgwb2nfb" path="res://components/track_game/track_segments/curve_segment.tscn" id="1_636u1"]
+[ext_resource type="Script" uid="uid://ddfamluhf2dfr" path="res://components/track_game/track.gd" id="1_en2eh"]
 [ext_resource type="PackedScene" uid="uid://bnfjsxc8kovug" path="res://components/track_game/track_segments/straight_segment.tscn" id="2_en2eh"]
 
 [node name="OvalTrack" type="Node2D"]
+script = ExtResource("1_en2eh")
+metadata/_custom_type_script = "uid://ddfamluhf2dfr"
 
-[node name="TrackSegment" parent="." instance=ExtResource("1_636u1")]
+[node name="TrackSegment7" parent="." instance=ExtResource("1_636u1")]
 
-[node name="TrackSegment6" parent="." instance=ExtResource("1_636u1")]
-position = Vector2(0, 1016)
-rotation = -1.5708
+[node name="TrackSegment10" parent="." instance=ExtResource("1_636u1")]
+position = Vector2(0, 1029)
+rotation = -1.57079
 
-[node name="TrackSegment3" parent="." instance=ExtResource("1_636u1")]
-position = Vector2(2046, 0)
+[node name="TrackSegment8" parent="." instance=ExtResource("1_636u1")]
+position = Vector2(2054, 2)
 rotation = 1.5708
 
-[node name="TrackSegment4" parent="." instance=ExtResource("1_636u1")]
-position = Vector2(2047, 1023)
+[node name="TrackSegment9" parent="." instance=ExtResource("1_636u1")]
+position = Vector2(2054, 1029)
 rotation = 3.14159
 
-[node name="TrackSegment2" parent="." instance=ExtResource("2_en2eh")]
-position = Vector2(1023, -256)
+[node name="TrackSegment" parent="." instance=ExtResource("2_en2eh")]
+position = Vector2(1027, -254)
 rotation = 1.5708
 
-[node name="TrackSegment5" parent="." instance=ExtResource("2_en2eh")]
-position = Vector2(1028, 1274)
-rotation = -1.5708
+[node name="TrackSegment2" parent="." instance=ExtResource("2_en2eh")]
+position = Vector2(1029, 1285)
+rotation = -1.57079

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://vncu15o3c4sh"]
 
-[ext_resource type="Script" uid="uid://d2c5dc5x00nu3" path="res://components/scripts/car.gd" id="1_qihn0"]
+[ext_resource type="Script" uid="uid://d2c5dc5x00nu3" path="res://components/track_game/car.gd" id="1_qihn0"]
 [ext_resource type="Texture2D" uid="uid://ldi63w7hxc88" path="res://temp_assets/kenney_puzzle-pack-2/PNG/Tiles green/tileGreen_07.png" id="2_ka16b"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kbpqo"]

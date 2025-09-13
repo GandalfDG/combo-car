@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://b50otusq306jl"]
 
 [ext_resource type="Script" uid="uid://cy18iue2caocn" path="res://components/grid_game/token.gd" id="1_mep5p"]
-[ext_resource type="Texture2D" uid="uid://cqtw7t2uag6f8" path="res://icon.svg" id="2_lcbe8"]
+[ext_resource type="Texture2D" uid="uid://cqtw7t2uag6f8" path="res://temp_assets/icon.svg" id="2_lcbe8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0ucay"]
 outline_size = 2

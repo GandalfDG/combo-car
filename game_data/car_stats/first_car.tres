@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="CarStats" load_steps=2 format=3 uid="uid://h6ohboyubgjk"]
 
-[ext_resource type="Script" uid="uid://bqgn2qw21n6ok" path="res://components/scripts/resources/car_stats.gd" id="1_72nvn"]
+[ext_resource type="Script" uid="uid://bqgn2qw21n6ok" path="res://components/track_game/car_stats.gd" id="1_72nvn"]
 
 [resource]
 script = ExtResource("1_72nvn")

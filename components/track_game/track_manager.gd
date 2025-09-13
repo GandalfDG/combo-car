@@ -25,7 +25,7 @@ func update_cars():
 	# then resolve collisions at this level?
 	for car in cars:
 		var track_segments = find_car_segments(car)
-		#car.steer(track_segments)
+		car.steer(track_segments)
 	
 	pass
 	

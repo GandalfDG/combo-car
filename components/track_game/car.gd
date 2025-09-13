@@ -15,3 +15,9 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	position = position + forward_velocity * delta * facing
+	
+func steer(track_segments: Array[TrackSegment]):
+	# for each segment, find the closest point on inner and outer edges
+	for segment in track_segments:
+		pass
+		

@@ -1,6 +1,10 @@
-[gd_scene format=3 uid="uid://bets58ufrwk2"]
+[gd_scene load_steps=2 format=3 uid="uid://bets58ufrwk2"]
+
+[ext_resource type="Script" uid="uid://b7du0igcfhiqe" path="res://components/track_game/track_segment.gd" id="1_h6d0g"]
 
 [node name="TrackSegment" type="Node2D"]
+script = ExtResource("1_h6d0g")
+metadata/_custom_type_script = "uid://b7du0igcfhiqe"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 

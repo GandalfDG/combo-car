@@ -1,30 +1,43 @@
-[gd_scene load_steps=4 format=3 uid="uid://ygpvrgwb2nfb"]
+[gd_scene load_steps=6 format=3 uid="uid://ygpvrgwb2nfb"]
 
 [ext_resource type="PackedScene" uid="uid://bets58ufrwk2" path="res://components/track_game/track_segment.tscn" id="1_3pjur"]
 [ext_resource type="Texture2D" uid="uid://db2pwnsr08x1k" path="res://assets/track/curve.svg" id="2_jhp4q"]
 
 [sub_resource type="Curve2D" id="Curve2D_yd405"]
 _data = {
-"points": PackedVector2Array(3, 250, -3, -250, -159, 295, -314.185, 2.97724, 314.185, -2.97724, 913, -690)
+"points": PackedVector2Array(3, 250, -3, -250, -159, 295, -314.185, 2.97724, 314.185, -2.97724, 354, -218)
 }
 point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_8qpyp"]
+_data = {
+"points": PackedVector2Array(6.22102, 438.43, -6.22102, -438.43, -159, 295, -697.486, 12.6403, 697.486, -12.6403, 863, -729)
+}
+point_count = 2
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yd405"]
+radius = 303.731
+height = 862.987
 
 [node name="TrackSegment" instance=ExtResource("1_3pjur")]
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_jhp4q")
 
-[node name="RacingLine" parent="Sprite2D" index="2"]
-position = Vector2(0.665802, -5.37172)
-scale = Vector2(1.0026, 1.01047)
-
-[node name="InnerEdge" parent="Sprite2D" index="3"]
+[node name="InnerEdge" parent="Sprite2D" index="2"]
 position = Vector2(159, 219)
 curve = SubResource("Curve2D_yd405")
 
-[node name="OuterEdge" parent="Sprite2D" index="4"]
+[node name="OuterEdge" parent="Sprite2D" index="3"]
 position = Vector2(-348, 222)
-curve = SubResource("Curve2D_yd405")
+curve = SubResource("Curve2D_8qpyp")
 
 [node name="TrackShape" parent="TrackArea" index="0"]
-position = Vector2(506, 502)
+position = Vector2(-197, 201)
+rotation = 0.372395
+shape = SubResource("CapsuleShape2D_yd405")
+
+[node name="TrackShape2" type="CollisionShape2D" parent="TrackArea" index="1"]
+position = Vector2(212, -194)
+rotation = 1.12432
+shape = SubResource("CapsuleShape2D_yd405")

@@ -1,11 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://bnfjsxc8kovug"]
+[gd_scene load_steps=6 format=3 uid="uid://bnfjsxc8kovug"]
 
 [ext_resource type="PackedScene" uid="uid://bets58ufrwk2" path="res://components/track_game/track_segment.tscn" id="1_0p4jc"]
 [ext_resource type="Texture2D" uid="uid://dd6gv7sw8teph" path="res://assets/track/straight.svg" id="2_xhcxs"]
 
-[sub_resource type="Curve2D" id="Curve2D_0p4jc"]
+[sub_resource type="Curve2D" id="Curve2D_5slkk"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -254, 518, 0, 0, 0, 0, -256, -509)
+"points": PackedVector2Array(0, 0, 0, 0, -509, 508, 0, 0, 0, 0, -508, -509)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_f0bin"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -509, 508, 0, 0, 0, 0, -508, -509)
 }
 point_count = 2
 
@@ -21,8 +27,12 @@ texture = ExtResource("2_xhcxs")
 [node name="ExitPoint" parent="Sprite2D" index="1"]
 position = Vector2(-256, -512)
 
-[node name="RacingLine" parent="Sprite2D" index="2"]
-curve = SubResource("Curve2D_0p4jc")
+[node name="InnerEdge" parent="Sprite2D" index="2"]
+curve = SubResource("Curve2D_5slkk")
+
+[node name="OuterEdge" parent="Sprite2D" index="3"]
+position = Vector2(509, 0)
+curve = SubResource("Curve2D_f0bin")
 
 [node name="TrackShape" parent="TrackArea" index="0"]
 shape = SubResource("RectangleShape2D_0p4jc")

@@ -1,8 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bets58ufrwk2"]
-
-[sub_resource type="Curve2D" id="Curve2D_a2j0a"]
-
-[sub_resource type="Curve2D" id="Curve2D_h6d0g"]
+[gd_scene format=3 uid="uid://bets58ufrwk2"]
 
 [node name="TrackSegment" type="Node2D"]
 
@@ -15,10 +11,8 @@ position = Vector2(-256, 512)
 position = Vector2(512, -256)
 
 [node name="InnerEdge" type="Path2D" parent="Sprite2D"]
-curve = SubResource("Curve2D_a2j0a")
 
 [node name="OuterEdge" type="Path2D" parent="Sprite2D"]
-curve = SubResource("Curve2D_h6d0g")
 
 [node name="TrackArea" type="Area2D" parent="."]
 

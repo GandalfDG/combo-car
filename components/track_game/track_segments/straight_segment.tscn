@@ -5,13 +5,13 @@
 
 [sub_resource type="Curve2D" id="Curve2D_5slkk"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -509, 508, 0, 0, 0, 0, -508, -509)
+"points": PackedVector2Array(0, 0, 0, 0, -507, 510, 0, 0, 0, 0, -510, -520)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_f0bin"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -509, 508, 0, 0, 0, 0, -508, -509)
+"points": PackedVector2Array(0, 0, 0, 0, 9, 507, 0, 0, 0, 0, -1, -516)
 }
 point_count = 2
 
@@ -27,11 +27,10 @@ texture = ExtResource("2_xhcxs")
 [node name="ExitPoint" parent="Sprite2D" index="1"]
 position = Vector2(-256, -512)
 
-[node name="InnerEdge" parent="Sprite2D" index="2"]
-position = Vector2(507, 0)
+[node name="LeftEdge" parent="Sprite2D" index="2"]
 curve = SubResource("Curve2D_5slkk")
 
-[node name="OuterEdge" parent="Sprite2D" index="3"]
+[node name="RightEdge" parent="Sprite2D" index="3"]
 curve = SubResource("Curve2D_f0bin")
 
 [node name="TrackShape" parent="TrackArea" index="0"]

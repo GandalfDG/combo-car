@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://3hdw4dfl5eb5"]
 
-[ext_resource type="PackedScene" uid="uid://ygpvrgwb2nfb" path="res://components/track_game/track_segments/curve_segment.tscn" id="1_636u1"]
+[ext_resource type="PackedScene" uid="uid://ygpvrgwb2nfb" path="res://components/track_game/track_segments/curve_segment_R.tscn" id="1_636u1"]
 [ext_resource type="Script" uid="uid://ddfamluhf2dfr" path="res://components/track_game/track.gd" id="1_en2eh"]
 [ext_resource type="PackedScene" uid="uid://bnfjsxc8kovug" path="res://components/track_game/track_segments/straight_segment.tscn" id="2_en2eh"]
 
@@ -29,5 +29,3 @@ rotation = 1.5708
 [node name="TrackSegment2" parent="." instance=ExtResource("2_en2eh")]
 position = Vector2(1029, 1285)
 rotation = -1.57079
-
-[editable path="TrackSegment"]

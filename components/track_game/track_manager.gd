@@ -10,7 +10,7 @@ func _ready() -> void:
 	var car_nodes = get_children().filter(func(node): return node is Car)
 	cars.assign(car_nodes)
 	
-	track = $OvalTrack
+	track = $Track
 	pass
 
 

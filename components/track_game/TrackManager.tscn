@@ -1,18 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://ches8kohh1gmp"]
+[gd_scene load_steps=7 format=3 uid="uid://ches8kohh1gmp"]
 
 [ext_resource type="Script" uid="uid://cdfgubc0gmd7f" path="res://components/track_game/track_manager.gd" id="1_gol62"]
-[ext_resource type="PackedScene" uid="uid://3hdw4dfl5eb5" path="res://game_data/tracks/oval_track.tscn" id="2_4ag0n"]
+[ext_resource type="PackedScene" uid="uid://i6huvw21ekiy" path="res://game_data/tracks/s_bend_track.tscn" id="2_mcxm6"]
 [ext_resource type="PackedScene" uid="uid://vncu15o3c4sh" path="res://components/track_game/car.tscn" id="3_sl0t6"]
+[ext_resource type="Texture2D" uid="uid://bge7jj265itn2" path="res://temp_assets/kenney_puzzle-pack-2/PNG/Tiles blue/tileBlue_07.png" id="4_mcxm6"]
+[ext_resource type="Texture2D" uid="uid://bptclhckuuj0b" path="res://temp_assets/kenney_puzzle-pack-2/PNG/Tiles red/tileRed_07.png" id="5_2jlvx"]
+[ext_resource type="Texture2D" uid="uid://mjmxw6ds8r73" path="res://temp_assets/kenney_puzzle-pack-2/PNG/Tiles yellow/tileYellow_07.png" id="6_svjog"]
 
 [node name="TrackManager" type="Node2D"]
 script = ExtResource("1_gol62")
 metadata/_custom_type_script = "uid://b7du0igcfhiqe"
 
-[node name="OvalTrack" parent="." instance=ExtResource("2_4ag0n")]
-position = Vector2(-459, 602)
+[node name="Track" parent="." instance=ExtResource("2_mcxm6")]
 
 [node name="Car" parent="." instance=ExtResource("3_sl0t6")]
-position = Vector2(923, 552)
+position = Vector2(120, 1719)
 scale = Vector2(0.5, 0.5)
 
 [node name="Camera2D" type="Camera2D" parent="Car"]
@@ -22,13 +24,26 @@ ignore_rotation = false
 zoom = Vector2(0.65, 0.65)
 
 [node name="Car2" parent="." instance=ExtResource("3_sl0t6")]
-position = Vector2(823, 463)
+position = Vector2(20, 1630)
 scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" parent="Car2" index="0"]
+texture = ExtResource("4_mcxm6")
 
 [node name="Car3" parent="." instance=ExtResource("3_sl0t6")]
-position = Vector2(821, 254)
+position = Vector2(18, 1421)
 scale = Vector2(0.5, 0.5)
 
+[node name="Sprite2D" parent="Car3" index="0"]
+texture = ExtResource("5_2jlvx")
+
 [node name="Car4" parent="." instance=ExtResource("3_sl0t6")]
-position = Vector2(710, 549)
+position = Vector2(-93, 1716)
 scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" parent="Car4" index="0"]
+texture = ExtResource("6_svjog")
+
+[editable path="Car2"]
+[editable path="Car3"]
+[editable path="Car4"]

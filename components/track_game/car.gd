@@ -21,8 +21,8 @@ func steer(track_segments: Array[TrackSegment]):
 	if track_segments.size() == 0:
 		return
 	var segment = track_segments[0]
-	var inner_path: Path2D = segment.inner_edge
-	var outer_path: Path2D = segment.outer_edge
+	var inner_path: Path2D = segment.right_edge
+	var outer_path: Path2D = segment.left_edge
 	
 	var inner_local_position = inner_path.to_local(self.global_position)
 	var outer_local_position = outer_path.to_local(self.global_position)

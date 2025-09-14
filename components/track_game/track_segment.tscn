@@ -14,9 +14,9 @@ position = Vector2(-256, 512)
 [node name="ExitPoint" type="Marker2D" parent="Sprite2D"]
 position = Vector2(512, -256)
 
-[node name="InnerEdge" type="Path2D" parent="Sprite2D"]
+[node name="LeftEdge" type="Path2D" parent="Sprite2D"]
 
-[node name="OuterEdge" type="Path2D" parent="Sprite2D"]
+[node name="RightEdge" type="Path2D" parent="Sprite2D"]
 
 [node name="TrackArea" type="Area2D" parent="."]
 

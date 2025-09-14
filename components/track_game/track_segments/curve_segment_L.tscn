@@ -1,15 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://ygpvrgwb2nfb"]
+[gd_scene load_steps=6 format=3 uid="uid://40e2f8silf86"]
 
-[ext_resource type="PackedScene" uid="uid://bets58ufrwk2" path="res://components/track_game/track_segment.tscn" id="1_3pjur"]
-[ext_resource type="Texture2D" uid="uid://db2pwnsr08x1k" path="res://assets/track/curve.svg" id="2_jhp4q"]
+[ext_resource type="PackedScene" uid="uid://bets58ufrwk2" path="res://components/track_game/track_segment.tscn" id="1_63i24"]
+[ext_resource type="Texture2D" uid="uid://db2pwnsr08x1k" path="res://assets/track/curve.svg" id="2_1mbfi"]
 
-[sub_resource type="Curve2D" id="Curve2D_yd405"]
+[sub_resource type="Curve2D" id="Curve2D_63i24"]
 _data = {
 "points": PackedVector2Array(3, 250, -3, -250, -159, 295, -314.185, 2.97724, 314.185, -2.97724, 354, -218)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_8qpyp"]
+[sub_resource type="Curve2D" id="Curve2D_1mbfi"]
 _data = {
 "points": PackedVector2Array(6.22102, 438.43, -6.22102, -438.43, -159, 295, -697.486, 12.6403, 697.486, -12.6403, 863, -729)
 }
@@ -19,18 +19,19 @@ point_count = 2
 radius = 303.731
 height = 862.987
 
-[node name="TrackSegment" instance=ExtResource("1_3pjur")]
+[node name="TrackSegment" instance=ExtResource("1_63i24")]
+scale = Vector2(-1, -1)
 
 [node name="Sprite2D" parent="." index="0"]
-texture = ExtResource("2_jhp4q")
+texture = ExtResource("2_1mbfi")
 
-[node name="InnerEdge" parent="Sprite2D" index="2"]
-position = Vector2(159, 219)
-curve = SubResource("Curve2D_yd405")
+[node name="LeftEdge" parent="Sprite2D" index="2"]
+position = Vector2(159, 217)
+curve = SubResource("Curve2D_63i24")
 
-[node name="OuterEdge" parent="Sprite2D" index="3"]
-position = Vector2(-348, 222)
-curve = SubResource("Curve2D_8qpyp")
+[node name="RightEdge" parent="Sprite2D" index="3"]
+position = Vector2(-354, 215)
+curve = SubResource("Curve2D_1mbfi")
 
 [node name="TrackShape" parent="TrackArea" index="0"]
 position = Vector2(-197, 201)

@@ -28,10 +28,10 @@ texture = ExtResource("2_xhcxs")
 position = Vector2(-256, -512)
 
 [node name="InnerEdge" parent="Sprite2D" index="2"]
+position = Vector2(507, 0)
 curve = SubResource("Curve2D_5slkk")
 
 [node name="OuterEdge" parent="Sprite2D" index="3"]
-position = Vector2(509, 0)
 curve = SubResource("Curve2D_f0bin")
 
 [node name="TrackShape" parent="TrackArea" index="0"]

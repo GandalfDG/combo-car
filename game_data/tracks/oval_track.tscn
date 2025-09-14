@@ -19,7 +19,7 @@ position = Vector2(2054, 2)
 rotation = 1.5708
 
 [node name="TrackSegment9" parent="." instance=ExtResource("1_636u1")]
-position = Vector2(2054, 1029)
+position = Vector2(2056, 1029)
 rotation = 3.14159
 
 [node name="TrackSegment" parent="." instance=ExtResource("2_en2eh")]
@@ -29,3 +29,5 @@ rotation = 1.5708
 [node name="TrackSegment2" parent="." instance=ExtResource("2_en2eh")]
 position = Vector2(1029, 1285)
 rotation = -1.57079
+
+[editable path="TrackSegment"]

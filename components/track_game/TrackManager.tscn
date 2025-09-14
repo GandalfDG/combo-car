@@ -13,20 +13,22 @@ position = Vector2(-459, 602)
 
 [node name="Car" parent="." instance=ExtResource("3_sl0t6")]
 position = Vector2(923, 552)
-rotation = 1.5708
 scale = Vector2(0.5, 0.5)
 
+[node name="Camera2D" type="Camera2D" parent="Car"]
+position = Vector2(-14, 6.00012)
+scale = Vector2(9.54431, 6.20596)
+ignore_rotation = false
+zoom = Vector2(0.65, 0.65)
+
 [node name="Car2" parent="." instance=ExtResource("3_sl0t6")]
-position = Vector2(814, 546)
-rotation = 1.5708
+position = Vector2(823, 463)
 scale = Vector2(0.5, 0.5)
 
 [node name="Car3" parent="." instance=ExtResource("3_sl0t6")]
-position = Vector2(779, 461)
-rotation = 1.5708
+position = Vector2(821, 254)
 scale = Vector2(0.5, 0.5)
 
 [node name="Car4" parent="." instance=ExtResource("3_sl0t6")]
-position = Vector2(708, 528)
-rotation = 1.5708
+position = Vector2(710, 549)
 scale = Vector2(0.5, 0.5)

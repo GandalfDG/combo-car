@@ -15,6 +15,10 @@ run/main_scene="uid://bai2mcthexgm5"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://temp_assets/icon.svg"
 
+[display]
+
+window/vsync/vsync_mode=2
+
 [editor]
 
 movie_writer/movie_file="/home/jackc/Videos/combo_car.avi"

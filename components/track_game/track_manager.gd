@@ -36,6 +36,8 @@ func find_car_segments(car: Car) -> Array[TrackSegment]:
 	var segments: Array[TrackSegment] = []
 	for area in overlapping_areas:
 		var parent = area.get_parent() as TrackSegment
+		if parent == null: continue
 		segments.append(parent)
+		
 		
 	return segments

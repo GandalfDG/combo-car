@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://dbm0o6df8d8qe"]
+[gd_scene load_steps=3 format=3 uid="uid://dbm0o6df8d8qe"]
 
 [ext_resource type="PackedScene" uid="uid://bnfois00347c2" path="res://components/grid_game/game_board.tscn" id="1_jwc21"]
+[ext_resource type="Script" uid="uid://dy36nxtb0k5tn" path="res://components/tuner_ui.gd" id="1_qyo7n"]
 
 [node name="TunerUI" type="Node2D"]
+script = ExtResource("1_qyo7n")
 
 [node name="Grid" parent="." instance=ExtResource("1_jwc21")]
 position = Vector2(277, 92)
@@ -23,3 +25,5 @@ popup/item_1/text = "Medium"
 popup/item_1/id = 1
 popup/item_2/text = "Hard"
 popup/item_2/id = 2
+
+[connection signal="item_selected" from="VBoxContainer/OptionButton" to="." method="_on_option_button_item_selected"]

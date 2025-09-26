@@ -7,7 +7,7 @@
 script = ExtResource("1_qyo7n")
 
 [node name="Grid" parent="." instance=ExtResource("1_jwc21")]
-position = Vector2(277, 92)
+position = Vector2(285, 7)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 offset_left = 870.0
@@ -18,12 +18,13 @@ metadata/_edit_use_anchors_ = true
 
 [node name="OptionButton" type="OptionButton" parent="VBoxContainer"]
 layout_mode = 2
-item_count = 3
-popup/item_0/text = "Easy"
-popup/item_0/id = 0
-popup/item_1/text = "Medium"
-popup/item_1/id = 1
-popup/item_2/text = "Hard"
-popup/item_2/id = 2
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer"]
+layout_mode = 2
+placeholder_text = "new resource name"
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "+"
 
 [connection signal="item_selected" from="VBoxContainer/OptionButton" to="." method="_on_option_button_item_selected"]

@@ -12,7 +12,8 @@ func _ready() -> void:
 	for res in listing:
 		difficulties.append(load(difficulty_path.path_join(res)))
 
-	print(difficulties)
+	for diff: Resource in difficulties:
+		option_button.add_item(diff.resource_path.get_file())
 
 	pass
 

@@ -1,4 +1,5 @@
 extends Node2D
+class_name GameBoard
 
 signal group_cleared(size: int, type: Token.token_type)
 signal goal_cleared
@@ -123,8 +124,6 @@ func clear_highlights():
 	grid.element_apply(func(el): if el != null: el.set_highlighted(false))
 
 func update_grid():
-
-
 #	search for empty cells and drop tokens above them down
 	grid.column_apply(func(column):
 		var temp_col = column.filter(func(token): return token != null)

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BoardDifficulty" load_steps=2 format=3 uid="uid://cpakj87bctwx8"]
+
+[ext_resource type="Script" uid="uid://c3o840c37svd5" path="res://components/grid_game/difficulty_setting.gd" id="1_plijo"]
+
+[resource]
+script = ExtResource("1_plijo")
+time_limit = 30.0
+refill_count = 50
+columns = 5
+rows = 5
+max_row = 10
+goal_count = 3
+refill_friendliness = 0.5
+group_sizes = Array[int]([])
+metadata/_custom_type_script = "uid://c3o840c37svd5"
